@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import { useState } from "react";
-import List from "./components/List.js";
+import Lists from "./components/Lists.js";
 import Form from "./components/Form";
 
 export default function App() {
@@ -52,7 +52,7 @@ export default function App() {
           setTodoData={setTodoData}
           handleSubmit={handleSubmit}
         ></Form>
-        <List todoData={todoData} setTodoData={setTodoData}></List>
+        <Lists todoData={todoData} setTodoData={setTodoData}></Lists>
       </div>
     </div>
   );
