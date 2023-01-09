@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./App.css";
 import { useState } from "react";
 import Lists from "./components/Lists.js";
@@ -39,6 +39,16 @@ export default function App() {
     setValue("");
   };
 
+  const handleClick = useCallback(
+    (id) => {
+      let newTodoData = todoData.filter((data) => data.id !== id);
+      //this.setState({ todoData: newTodoData }); - 클래스
+      setTodoData(newTodoData);
+      localStorage.setItem("todoData", JSON.stringify(newTodoData));
+    },
+    [todoData]
+  );
+
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-blue-50">
       <div className="w-full p-6 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg">
@@ -52,7 +62,11 @@ export default function App() {
           setTodoData={setTodoData}
           handleSubmit={handleSubmit}
         ></Form>
-        <Lists todoData={todoData} setTodoData={setTodoData}></Lists>
+        <Lists
+          todoData={todoData}
+          setTodoData={setTodoData}
+          handleClick={handleClick}
+        ></Lists>
       </div>
     </div>
   );

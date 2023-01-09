@@ -7,6 +7,7 @@ export default function Form({
   setTodoData,
   handleSubmit,
 }) {
+  console.log("Form component");
   const handleChange = (e) => {
     //this.setState({ value: e.target.value });
     setValue(e.target.value);

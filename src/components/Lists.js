@@ -2,7 +2,8 @@ import React from "react";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import List from "./List.js";
 
-const Lists = React.memo(({ todoData, setTodoData }) => {
+const Lists = React.memo(({ todoData, setTodoData, handleClick }) => {
+  console.log("lists component");
   //데이터 변경
   const handleEnd = (result) => {
     if (!result.destination) return;
@@ -35,6 +36,7 @@ const Lists = React.memo(({ todoData, setTodoData }) => {
                       setTodoData={setTodoData}
                       provided={provided}
                       snapshot={snapshot}
+                      handleClick={handleClick}
                     ></List>
                   )}
                 </Draggable>
